@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <nav>
+      <div class="container-fluid">
+          <a href="/" class="navbar-nav">Home</a>
+          &nbsp; | &nbsp;
+          <a href="/flights/new" class="navbar-nav">New Flights</a>
+          &nbsp; | &nbsp;
+          <a href="/flights" class="navbar-nav">All Flights</a> 
+      </div>
+  </nav>
+  <ul>
+    <% for(let i = 0; i < flights.length; i++){ %>
+      <li>
+        <%= flights[i].airline %>
+        -
+        <%= flights[i].airport %>
+        -
+        <%= flights[i].flightNo %>
+        -
+        <%= flights[i].date %>
+      </li>
+    <% } %>
+  </ul>
+  </body>
+</html>
