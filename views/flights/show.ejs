@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+
+<table id="show-page">
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>Airport</th>
+      <th>Flight Number</th>
+      <th>Depart</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= flight.airline %></td>
+        <td><%= flight.airport %></td>
+        <td><%= flight.flightNo %></td>
+        <td><%= flight.departs %></td>
+      </tr>
+  </tbody>
+  
+</table>
+
+<h2>Destinations</h2>
+
+<form method="POST"
+ action="/destinations/flights/<%= flight._id %>">
+  <label>Airport:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <option value="LAX">LAX</option>
+      <option value="DEN">DEN</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label><br>
+  
+  <label>Arrival:</label>
+  <input type="datetime-local" name="arrival">
+</label><br>
+</select>
+<input type="submit" value="Add Destination">
+
+
+
+</form>
+
+<ul>
+  <% for(let i = 0; i < flight.destination.length; i++){%>
+    <li><%= flight.destination[i].airport%> <%= flight.destination[i].arrival%></li>
+    <% } %>
+  </ul>
+
+
+<h2>Ticket</h2>
+
+<a href="/flights/<%= flight._id %>/tickets/new">New Tickets</a>
+
+
+<ul>
+  <% for(let i = 0; i < tickets.length; i++){%>
+    <li><%= tickets[i].seat%> <%= tickets[i].price%></li>
+    <% } %>
+</ul>
+    
+
+<%- include('../partials/footer') %>
